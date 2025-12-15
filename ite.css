@@ -202,6 +202,7 @@ body {
 }
 /* Mobile responsiveness: general overrides for small screens */
 @media (max-width: 768px) {
+    .content { position: absolute; top: 60vh; left: 50%; transform: translateX(-50%); width: 100%; padding: 0 12px; }
     .tour_img, img { max-width: 100%; height: auto; }
     .tour_container { height: auto; }
     #images { grid-template-columns: 1fr; margin-left: 0; max-width: 92%; position: static; top: auto; transform: none; padding: 12px; }
@@ -222,4 +223,5 @@ body {
         max-width: 92%;
     }
 }
+
 
