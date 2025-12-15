@@ -270,4 +270,13 @@ body {
 
 .option_link:active {
     transform: translateX(-5px) scale(0.98);
+
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #images { grid-template-columns: 1fr; margin-left: 12px; max-width: 94%; position: static; top: auto; transform: none; }
+    #options_list { position: static; right: auto; top: auto; transform: none; width: calc(100% - 28px); margin: 12px auto; min-width: auto; padding: 12px; backdrop-filter: none; }
+    .option_link { padding: 10px 14px; font-size: 15px; }
+    .tour_img { height: auto; }
 }
