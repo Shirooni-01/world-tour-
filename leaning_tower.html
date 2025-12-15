@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Tour . Leaning Tower</title>
+    <link rel="stylesheet" href="leaning_tower.css">
+    <link rel="stylesheet" href="2page.css">
+</head>
+<body>
+
+    <div id="bg_shade"></div>
+    <video id="bg-video" autoplay muted playsinline></video>
+    <video src="bgvideo.mp4" id="img_bg" autoplay muted playsinline></video>
+
+    <div id="heading">
+        <h1 id="head_world_tour">World tours</h1>
+    </div>
+
+    <!-- back button removed from here; will be placed inside #options_list for alignment -->
+
+    <div id="images">
+        <!-- Arranged as a 2x2 grid (same rules from linked 2page.css) -->
+        <div class="tour_container">
+            <img src="slant_tower.jpg" alt="Leaning main" id="slant_tower" class="tour_img">
+        </div>
+        <div class="tour_container">
+            <img src="slant_tower2.jpg" alt="pair 2-4" id="pair24" class="tour_img">
+        </div>
+        <div class="tour_container">
+            <img src="slant_tower3.jpg" alt="pair 3-5" id="pair35" class="tour_img">
+        </div>
+        <div class="tour_container">
+            <img src="slant_tower6.jpg" alt="pair 6-7" id="pair67" class="tour_img">
+        </div>
+    </div>
+
+    <!-- Right-side text panel (reuses styles from ../worldtour2ndpage/2page.css -> #options_list) -->
+    <div id="options_list">
+        <h2 id="options_title">Leaning Tower</h2>
+        <div class="options_text">
+            <p>
+                The Leaning Tower of Pisa in Italy is famous for its unique tilt, caused by soft ground that couldn’t support its weight during construction in 1173. Standing about 56 meters tall, it serves as the bell tower of Pisa’s cathedral. After many restoration efforts, the tower has been stabilized and is now a popular tourist attraction known worldwide.
+            </p>
+            <p>
+             Today, it is one of the most iconic monuments in the world and a major tourist attraction. 
+            </p>
+        </div>
+        <div class="action-row" style="margin-top:16px;">
+            <a href="2page.html" class="btn-back" aria-label="Back to World Tours Page">&larr; Back</a>
+            <a href="booknow.html" class="btn-book" target="_blank">Book Now</a>
+        </div>
+    </div>
+
+    <script>
+        // Reusable paired cube-flip function
+        function startPairedFlip(imgEl, imgs, intervalMs) {
+            if (!imgEl) return;
+            let idx = 0;
+            let rotating = false;
+
+            setInterval(() => {
+                if (rotating) return;
+                rotating = true;
+                imgEl.style.transition = 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)';
+                imgEl.style.transform = 'rotateY(90deg)';
+
+                setTimeout(() => {
+                    idx = (idx + 1) % imgs.length;
+                    imgEl.src = imgs[idx];
+                    imgEl.style.transform = 'rotateY(180deg)';
+
+                    setTimeout(() => {
+                        imgEl.style.transform = 'rotateY(0deg)';
+                        rotating = false;
+                    }, 500);
+                }, 500);
+            }, intervalMs);
+        }
+
+        // Main slant image (optional pair with slant_tower1)
+        startPairedFlip(document.getElementById('slant_tower'), ['slant_tower.jpg', 'slant_tower1.jpg'], 3000);
+
+        // Requested pairs: 2<->4, 3<->5, 6<->7 (using slant_tower images)
+        startPairedFlip(document.getElementById('pair24'), ['slant_tower2.jpg', 'slant_tower4.jpg'], 3000);
+        startPairedFlip(document.getElementById('pair35'), ['slant_tower3.jpg', 'slant_tower5.jpg'], 3000);
+        startPairedFlip(document.getElementById('pair67'), ['slant_tower6.jpg', 'slant_tower7.jpg'], 3000);
+    </script>
+
+    <script>
+        (function(){
+            const player = document.getElementById('bg-video');
+            if(player){
+                player.src = 'bgvideo.mp4';
+                player.loop = true;
+                const p = player.play();
+                if (p && p.catch) p.catch(()=>{});
+            }
+        })();
+    </script>
+
+    <!-- removed absolute-positioning script for back button; alignment handled via CSS .action-row -->
+
+</body>
+</html>

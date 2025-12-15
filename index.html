@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World tour</title>
+    <link rel="stylesheet" href="ite.css">
+</head>
+<body>
+    <div id="bg_shade"></div>
+    
+    <video id="bg-video" autoplay muted playsinline></video>
+
+    <div class="content">
+        <div id="heading">
+            <h1 id="head_world_tour">Welcome to World tour</h1>
+        </div>
+        <div id="but">
+            <a href="2page.html" target="_blank"><button id="explore">Explore</button></a>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            const player = document.getElementById('bg-video');
+            player.src = 'bgvideo.mp4';
+            player.loop = true;
+            const p = player.play();
+            if (p && p.catch) p.catch(()=>{});
+        })();
+    </script>
+</body>
+</html>
