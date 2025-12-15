@@ -212,4 +212,14 @@ body {
     #heading { padding: 14px 12px; height: auto; text-align: center; }
     #head_world_tour { font-size: 28px; }
     .container, .container-wrap { width: calc(100% - 32px); margin: 12px auto; padding: 12px; }
+
+       /* Larger explore button on mobile for easier tapping */
+    #explore {
+        width: 180px;
+        height: 60px;
+        font-size: 20px;
+        border-radius: 28px;
+        max-width: 92%;
+    }
 }
+
