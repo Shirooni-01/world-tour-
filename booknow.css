@@ -193,6 +193,19 @@ input[type="submit"] {
     transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
+/* row with submit and back buttons inside booking card */
+.row_actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.row_actions .btn-back {
+    text-align: center;
+}
+
 .btn-submit:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 18px rgba(127, 255, 212, 0.25);
@@ -229,4 +242,6 @@ input[type="submit"] {
 @media (max-width: 768px) {
     .container, .container-wrap { width: calc(100% - 28px); margin: 12px auto; padding: 12px; }
     .btn-back, .btn-submit { display:block; width:100%; margin:8px 0; }
+    .row_actions { flex-direction: column; justify-content: center; }
 }
+
