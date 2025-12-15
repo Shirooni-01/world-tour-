@@ -104,9 +104,19 @@ body{
     box-shadow: 0 8px 20px rgba(127,255,212,0.18); 
 }
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    #options_list { position: static; right: auto; top: auto; width: calc(100% - 32px); min-width: auto; margin: 12px auto; padding: 12px; }
+    .tour_container { height: auto; }
+    .tour_img { height: auto; }
+    .action-row { justify-content: center; gap: 10px; }
+    .btn-book, .btn-back { display:block; width:100%; margin:8px 0; }
+}
+
 .action-row {
     display: flex;
     gap: 12px;
     align-items: center;
     justify-content: flex-end; /* align to right within options panel */
 }
+
