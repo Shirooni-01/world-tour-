@@ -198,4 +198,18 @@ body {
         width: 180px;
         font-size: 16px;
     }
+
+}
+/* Mobile responsiveness: general overrides for small screens */
+@media (max-width: 768px) {
+    .tour_img, img { max-width: 100%; height: auto; }
+    .tour_container { height: auto; }
+    #images { grid-template-columns: 1fr; margin-left: 0; max-width: 92%; position: static; top: auto; transform: none; padding: 12px; }
+    #options_list { position: static !important; right: auto; top: auto; transform: none; width: calc(100% - 32px); min-width: auto; margin: 12px auto; padding: 14px; backdrop-filter: none; }
+    .action-row { justify-content: center; gap: 10px; }
+    .btn-book, .btn-back, .btn-submit, #explore { display: block; width: 100%; max-width: 360px; margin: 8px auto; }
+    #but { position: static; left: auto; top: auto; transform: none; margin: 24px auto; }
+    #heading { padding: 14px 12px; height: auto; text-align: center; }
+    #head_world_tour { font-size: 28px; }
+    .container, .container-wrap { width: calc(100% - 32px); margin: 12px auto; padding: 12px; }
 }
