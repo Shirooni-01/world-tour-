@@ -222,4 +222,11 @@ input[type="submit"] {
     .btn-back {
         margin-left: 12px;
     }
+
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .container, .container-wrap { width: calc(100% - 28px); margin: 12px auto; padding: 12px; }
+    .btn-back, .btn-submit { display:block; width:100%; margin:8px 0; }
 }
