@@ -15,6 +15,42 @@
         <h1 id="head_world_tour">World tours</h1>
     </div>
 
+     <!-- navigation links -->
+        <div id="navbar">
+            <a href="index.html" class="nav_link">Home</a>
+            <a href="details.html" class="nav_link">Package Deals</a>
+            <a href="booknow.html" class="nav_link">Book Now</a>
+            <div class="nav-item contact-menu">
+                <a href="contactus.html" class="nav_link" id="contact-toggle" aria-expanded="false">Contact Us</a>
+                <ul id="contact-dropdown" class="contact-dropdown" aria-hidden="true">
+                    <li>Email: contact@example.com</li>
+                    <li>Phone: +1234567890</li>
+                </ul>
+            </div>
+            <!-- <a href="aboutus.html" class="nav_link">About Us</a> -->
+        </div>
+
+            <!-- mobile menu button (visible on small screens) -->
+            <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">⋮</button>
+
+            <!-- mobile menu (shows on small screens when toggled) -->
+            <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="details.html">Package Deals</a></li>
+                    <li><a href="booknow.html">Book Now</a></li>
+                    <li class="mobile-contact">
+                        <button id="mobile-contact-toggle" class="mobile-contact-toggle" aria-expanded="false">Contact Us</button>
+                        <ul id="mobile-contact-dropdown" class="mobile-contact-dropdown" aria-hidden="true">
+                            <li><a href="contactus.html#email">Email: contact@example.com</a></li>
+                            <li><a href="contactus.html#phone">Phone: +1234567890</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+
+
     <div id="images">
 
         <video src="bgvideo.mp4" id="img_bg" autoplay muted playsinline></video>
@@ -41,12 +77,101 @@
             <li><a href="leaning_tower.html" class="option_link">Leaning Tower Tour</a></li>
             <li><a href="tajmahal.html" class="option_link">Taj Mahal Tour</a></li>
             <li><a href="wallofchina.html" class="option_link">Great Wall Tour</a></li>
-            <li><a href="details.html" class="option_link">Package Deals</a></li>
-            <li><a href="booknow.html" class="option_link">Book Now</a></li>
         </ul>
     </div>
 
     <script>
+
+        // Contact dropdown toggle
+                (function(){
+                        const toggle = document.getElementById('contact-toggle');
+                        const dropdown = document.getElementById('contact-dropdown');
+
+                        function closeDropdown(){
+                                dropdown.parentElement.classList.remove('open');
+                                toggle.setAttribute('aria-expanded','false');
+                                dropdown.setAttribute('aria-hidden','true');
+                        }
+
+                        function openDropdown(){
+                                dropdown.parentElement.classList.add('open');
+                                toggle.setAttribute('aria-expanded','true');
+                                dropdown.setAttribute('aria-hidden','false');
+                        }
+
+                        toggle.addEventListener('click', function(e){
+                                e.preventDefault();
+                                if (dropdown.parentElement.classList.contains('open')) closeDropdown(); else openDropdown();
+                        });
+
+                        // close when clicking outside
+                        document.addEventListener('click', function(e){
+                                if (!e.target.closest('.contact-menu')) closeDropdown();
+                        });
+
+                        // close on ESC (dropdown only)
+                        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDropdown(); });
+                    })();
+
+                        // Mobile menu toggle
+                        (function(){
+                            const btn = document.getElementById('mobile-menu-btn');
+                            const menu = document.getElementById('mobile-menu');
+
+                            function closeMobileMenu(){
+                                menu.classList.remove('open');
+                                btn.setAttribute('aria-expanded','false');
+                                menu.setAttribute('aria-hidden','true');
+                                // ensure mobile contact submenu is closed when menu closes
+                                if (typeof closeMobileContact === 'function') closeMobileContact();
+                            }
+
+                            function openMobileMenu(){
+                                // ensure mobile contact submenu starts closed
+                                if (typeof closeMobileContact === 'function') closeMobileContact();
+                                menu.classList.add('open');
+                                btn.setAttribute('aria-expanded','true');
+                                menu.setAttribute('aria-hidden','false');
+                            }
+
+                            function toggle(){ if (menu.classList.contains('open')) closeMobileMenu(); else openMobileMenu(); }
+
+                            btn.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
+
+                            // close on outside click
+                            document.addEventListener('click', function(e){ if (!e.target.closest('#mobile-menu') && !e.target.closest('#mobile-menu-btn')) closeMobileMenu(); });
+
+                            // close when a link is clicked
+                            menu.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){ closeMobileMenu(); if (typeof closeMobileContact === 'function') closeMobileContact(); }));
+
+                            // mobile contact submenu toggle
+                            const mobileContactToggle = document.getElementById('mobile-contact-toggle');
+                            const mobileContactDropdown = document.getElementById('mobile-contact-dropdown');
+                            const mobileContactLi = mobileContactToggle ? mobileContactToggle.closest('.mobile-contact') : null;
+
+                            function closeMobileContact(){
+                                if (mobileContactLi) mobileContactLi.classList.remove('open');
+                                if (mobileContactToggle) mobileContactToggle.setAttribute('aria-expanded','false');
+                                if (mobileContactDropdown) mobileContactDropdown.setAttribute('aria-hidden','true');
+                            }
+
+                            function openMobileContact(){
+                                if (mobileContactLi) mobileContactLi.classList.add('open');
+                                if (mobileContactToggle) mobileContactToggle.setAttribute('aria-expanded','true');
+                                if (mobileContactDropdown) mobileContactDropdown.setAttribute('aria-hidden','false');
+                            }
+
+                            if (mobileContactToggle) {
+                                mobileContactToggle.addEventListener('click', function(e){
+                                    e.stopPropagation();
+                                    if (mobileContactLi.classList.contains('open')) closeMobileContact(); else openMobileContact();
+                                });
+
+                                // prevent clicks inside the contact dropdown from closing the mobile menu
+                                mobileContactDropdown && mobileContactDropdown.addEventListener('click', function(e){ e.stopPropagation(); });
+                            }
+                        })();
+        
         // Image rotation for Eiffel Tower with cube effect
         const eiffelTower = document.getElementById('ifell_tower');
         const images = ['ifell_tower.jpg', 'ifell_tower1.jpg'];
@@ -185,4 +310,5 @@
         })();
     </script>
 </body>
+
 </html> 
