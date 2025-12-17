@@ -14,11 +14,11 @@
 	</div>
 
 	<div id="bg_shade"></div>
-    <video id="bg-video" autoplay muted playsinline></video>
+    <video src="wallodchina.mp4" id="bg-video" autoplay muted playsinline></video>
 
 	<div id="images">
 		<!-- Arranged as a 2x2 grid (same rules from linked 2page.css) -->
-		  <video src="bgvideo.mp4" id="img_bg" autoplay muted playsinline></video>
+		  <video src="wallodchina.mp4" id="img_bg" autoplay muted playsinline></video>
 		<div class="tour_container">
 			<img src="wall_of_china.jpg" alt="Wall main" id="wall_of_china" class="tour_img">
 		</div>
@@ -103,16 +103,9 @@
 			window.addEventListener('resize', align);
 			setTimeout(align, 250);
 		})();
-		
-		(function(){
-        const player = document.getElementById('bg-video');
-        player.src = 'bgvideo.mp4';
-        player.loop = true;
-        const p = player.play();
-        if (p && p.catch) p.catch(()=>{});
-        })();
 	</script>
 
 </body>
 </html>
+
 
