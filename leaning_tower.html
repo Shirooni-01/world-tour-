@@ -11,7 +11,7 @@
 
     <div id="bg_shade"></div>
     <video id="bg-video" autoplay muted playsinline></video>
-    <video src="bgvideo.mp4" id="img_bg" autoplay muted playsinline></video>
+    <video src="leaning_tower.mp4" id="img_bg" autoplay muted playsinline></video>
 
     <div id="heading">
         <h1 id="head_world_tour">World tours</h1>
@@ -87,19 +87,8 @@
         startPairedFlip(document.getElementById('pair67'), ['slant_tower6.jpg', 'slant_tower7.jpg'], 3000);
     </script>
 
-    <script>
-        (function(){
-            const player = document.getElementById('bg-video');
-            if(player){
-                player.src = 'bgvideo.mp4';
-                player.loop = true;
-                const p = player.play();
-                if (p && p.catch) p.catch(()=>{});
-            }
-        })();
-    </script>
-
     <!-- removed absolute-positioning script for back button; alignment handled via CSS .action-row -->
 
 </body>
 </html>
+
