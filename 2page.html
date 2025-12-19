@@ -11,11 +11,12 @@
     <div id="bg_shade"></div>
     <video id="bg-video" autoplay muted playsinline></video>
 
-    <div id="heading">
-        <h1 id="head_world_tour">World tours</h1>
-    </div>
+    <nav id="site-nav">
+        <div id="heading">
+            <h1 id="head_world_tour">World tours</h1>
+        </div>
 
-     <!-- navigation links -->
+        <!-- navigation links -->
         <div id="navbar">
             <a href="index.html" class="nav_link">Home</a>
             <a href="details.html" class="nav_link">Package Deals</a>
@@ -50,7 +51,6 @@
             </div>
     </nav>
 
-
     <div id="images">
 
         <video src="bgvideo.mp4" id="img_bg" autoplay muted playsinline></video>
@@ -77,12 +77,13 @@
             <li><a href="leaning_tower.html" class="option_link">Leaning Tower Tour</a></li>
             <li><a href="tajmahal.html" class="option_link">Taj Mahal Tour</a></li>
             <li><a href="wallofchina.html" class="option_link">Great Wall Tour</a></li>
+            <!-- Package Deals and Book Now moved to navbar -->
         </ul>
     </div>
 
     <script>
 
-        // Contact dropdown toggle
+                // Contact dropdown toggle
                 (function(){
                         const toggle = document.getElementById('contact-toggle');
                         const dropdown = document.getElementById('contact-dropdown');
@@ -171,7 +172,7 @@
                                 mobileContactDropdown && mobileContactDropdown.addEventListener('click', function(e){ e.stopPropagation(); });
                             }
                         })();
-        
+
         // Image rotation for Eiffel Tower with cube effect
         const eiffelTower = document.getElementById('ifell_tower');
         const images = ['ifell_tower.jpg', 'ifell_tower1.jpg'];
@@ -310,5 +311,4 @@
         })();
     </script>
 </body>
-
 </html> 
